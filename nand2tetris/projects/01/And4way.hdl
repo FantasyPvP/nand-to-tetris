@@ -1,0 +1,11 @@
+
+CHIP And4way {
+    IN a, b, c, d;
+    OUT out;
+
+    PARTS:
+    // Put your code here:
+    And (a=a, b=b, out=half1);
+    And (a=c, b=d, out=half2);
+    And (a=half1, b=half2, out=out);
+}
