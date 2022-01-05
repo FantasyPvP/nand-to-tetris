@@ -43,4 +43,29 @@ CHIP ALU {
 
     PARTS:
    // Put you code here:
+
+
+   //nx
+    Not16 (in=x, out=notx); // inverts x // negation step one
+    Inc16 (in=notx, out=negx); // adds one to notx // negation step two
+   //ny
+    Not16 (in=y, out=noty); // inverts y // negation step one
+    Inc16 (in=noty, out=negy); // adds one to noty // negation step two
+    
+    Add16 (a=x, b=y, out=z); // adds the two numbers together
+
+    Not16 (in=z, out=notz); // inverts z // negation step one
+    Inc16 (in=notz, out=negz); // adds one to notz // negation step two
+
+
+
+
+
+
+
+
+
+
+
+
 }
