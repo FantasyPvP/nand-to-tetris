@@ -45,6 +45,12 @@ CHIP ALU {
    // Put you code here:
 
 
+
+    ZeroerX16(num=x, zero=zero16)
+   //zx
+    Mux (a=x, b=zero16, sel=zx, out=xfinal)
+   //zy
+
    //nx
     Not16 (in=x, out=notx); // inverts x // negation step one
     Inc16 (in=notx, out=negx); // adds one to notx // negation step two
@@ -52,8 +58,9 @@ CHIP ALU {
     Not16 (in=y, out=noty); // inverts y // negation step one
     Inc16 (in=noty, out=negy); // adds one to noty // negation step two
     
-    Add16 (a=x, b=y, out=z); // adds the two numbers together
+    Add16 (a=xfinal, b=yfinal, out=z); // adds the two numbers together
 
+   //no
     Not16 (in=z, out=notz); // inverts z // negation step one
     Inc16 (in=notz, out=negz); // adds one to notz // negation step two
 

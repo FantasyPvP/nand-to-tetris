@@ -1,0 +1,25 @@
+CHIP ZeroerX16 {
+
+    IN num[16];
+    OUT zero[16];
+    PARTS:
+   // Code here
+    Not (in=num[0], out=notin);
+    And (a=num[0], b=notin, out=numzero);  
+    And (a=numzero, b=numzero, out=zero[0]);
+    And (a=numzero, b=numzero, out=zero[1]);
+    And (a=numzero, b=numzero, out=zero[2]);
+    And (a=numzero, b=numzero, out=zero[3]);
+    And (a=numzero, b=numzero, out=zero[4]);
+    And (a=numzero, b=numzero, out=zero[5]);
+    And (a=numzero, b=numzero, out=zero[6]);
+    And (a=numzero, b=numzero, out=zero[7]);
+    And (a=numzero, b=numzero, out=zero[8]);
+    And (a=numzero, b=numzero, out=zero[9]);
+    And (a=numzero, b=numzero, out=zero[10]);
+    And (a=numzero, b=numzero, out=zero[11]);
+    And (a=numzero, b=numzero, out=zero[12]);
+    And (a=numzero, b=numzero, out=zero[13]);
+    And (a=numzero, b=numzero, out=zero[14]);
+    And (a=numzero, b=numzero, out=zero[15]);
+}
