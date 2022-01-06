@@ -46,24 +46,30 @@ CHIP ALU {
 
 
 
-    ZeroerX16(num=x, zero=zero16)
+    ZeroerX16 (num=x, zero=zero16);
    //zx
-    Mux (a=x, b=zero16, sel=zx, out=xfinal)
+    Mux16 (a=x, b=zero16, sel=zx, out=xorzero);
    //zy
+    Mux16 (a=y, b=zero16, sel=zx, out=yorzero);
 
    //nx
-    Not16 (in=x, out=notx); // inverts x // negation step one
+    Not16 (in=xorzero, out=notx); // inverts x // negation step one
     Inc16 (in=notx, out=negx); // adds one to notx // negation step two
+    Mux16 (a=xorzero, b=notx, sel=nx, out=xfinal);
    //ny
-    Not16 (in=y, out=noty); // inverts y // negation step one
+    Not16 (in=yorzero, out=noty); // inverts y // negation step one
     Inc16 (in=noty, out=negy); // adds one to noty // negation step two
-    
-    Add16 (a=xfinal, b=yfinal, out=z); // adds the two numbers together
+    Mux16 (a=yorzero, b=noty, sel=ny, out=yfinal);
+
+   //add
+    Add16 (a=xfinal, b=yfinal, out=zadd); // adds the two numbers together
+    And16 (a=xfinal, b=yfinal, out=zand); // bitwise and function of x and y
+    Mux16 (a=zand, b=zadd, sel=f, out=z);
 
    //no
     Not16 (in=z, out=notz); // inverts z // negation step one
     Inc16 (in=notz, out=negz); // adds one to notz // negation step two
-
+    Mux16 (a=z, b=notz, sel=no, out=out);
 
 
 

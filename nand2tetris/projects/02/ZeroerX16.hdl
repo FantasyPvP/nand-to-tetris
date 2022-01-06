@@ -4,8 +4,9 @@ CHIP ZeroerX16 {
     OUT zero[16];
     PARTS:
    // Code here
-    Not (in=num[0], out=notin);
+    Not (in=num[0], out=notnum);
     And (a=num[0], b=notin, out=numzero);  
+
     And (a=numzero, b=numzero, out=zero[0]);
     And (a=numzero, b=numzero, out=zero[1]);
     And (a=numzero, b=numzero, out=zero[2]);
